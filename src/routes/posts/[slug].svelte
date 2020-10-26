@@ -29,14 +29,16 @@
         t.slug == "hash-news-team" ||
         t.slug == "hash-sports-team"
     );
-    let related = await this.fetch(
-      `https://content.freshair.org.uk/ghost/api/canary/content/posts/?key=335cdc08c8018af3c8cbb85c64&filter=tag:${team.slug}%2btag:hash-article&limit=3&fields=id,title,slug,feature_image&include=authors,tags`
-    )
-      .then((response) => response.json())
-      .then(({ posts }) => {
-        return posts;
-      });
-    return { ...article, related };
+    if (team) {
+      let related = await this.fetch(
+        `https://content.freshair.org.uk/ghost/api/canary/content/posts/?key=335cdc08c8018af3c8cbb85c64&filter=tag:${team.slug}%2btag:hash-article&limit=3&fields=id,title,slug,feature_image&include=authors,tags`
+      )
+        .then((response) => response.json())
+        .then(({ posts }) => {
+          return posts;
+        });
+      return { ...article, related };
+    } else return { ...article, related: [] };
   }
 </script>
 
@@ -61,13 +63,13 @@
 
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
-  <div class="relative rounded-3xl overflow-hidden">
+  <div class="relative rounded-3xl overflow-hidden mx-4">
     <img
-      class="cover w-full h-96 rounded-3xl bg-gray-800"
-      src={`https://imgproxy.freshair.radio/signature/fill/1000/500/sm/1/plain/${post.feature_image || 'https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png'}@png`}
+      class="object-cover w-full h-72 lg:h-96 rounded-3xl bg-gray-800"
+      src={`https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${post.feature_image || 'https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png'}@png`}
       alt="Logo" />
     <div
-      class="text-right  absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0 w-full  z-10 text-white text-xl p-4 font-thin">
+      class="text-right w-full absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0   z-10 text-white text-xl  font-thin  rounded-b-3xl">
       <div class="mx-auto max-w-3xl">
         {#if rating}
           <div class="stars">
@@ -135,18 +137,19 @@
             {/each}
           </div>
         {/if}
-        <h3 class="text-xl">
+        <h3 class="text-lg lg:text-xl">
           <strong>{post.authors ? post.authors[0].name : '...'}</strong>
         </h3>
-        <h2 class="text-3xl">{post.title || '...'}</h2>
+        <h2 class="text-2xl lg:text-3xl">{post.title || '...'}</h2>
       </div>
     </div>
   </div>
 
-  <div class="prose prose-xl mx-auto mt-8 mb-8">
+  <div
+    class="prose prose-md lg:prose-xl mx-auto mt-4 lg:mt-8 mb-8 px-4 overflow-hidden">
     {@html post.html}
   </div>
-  <div class="grid grid-cols-3 gap-4 px-4 pb-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 pb-4">
     {#each related as post}
       <PostPreview {post} />
     {/each}

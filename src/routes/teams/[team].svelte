@@ -43,16 +43,18 @@
 
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
-  <img
-    class="cover w-full h-96 rounded-3xl bg-white bg-opacity-50"
-    src={`https://imgproxy.freshair.radio/signature/fill/1000/500/sm/1/plain/${team.picture}@jpg`} />
+  <div class="mx-4">
+    <img
+      class="object-cover w-full h-72 lg:h-96 rounded-3xl bg-white bg-opacity-50 "
+      src={`https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${team.picture}@jpg`} />
+  </div>
   <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
     the
     <strong>{team.name}</strong>
     team
   </h1>
 
-  <div class="grid grid-cols-3 gap-4 px-4 pb-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 pb-4">
     {#each posts as post}
       <PostPreview {post} />
     {/each}

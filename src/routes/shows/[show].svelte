@@ -18,11 +18,11 @@
 
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
-  <h1 class="text-4xl text-white p-6 px-8 font-thin">
+  <h1 class="text-4xl text-white p-6 px-6 font-thin">
     <strong>{show.title}</strong>
     {#if show.meta && show.meta.byline}with {show.meta.byline}{/if}
   </h1>
-  <section class="grid grid-cols-2 px-6 gap-4">
+  <section class="grid grid-cols-1 md:grid-cols-2 px-6 gap-4">
     <ShowCover {show} size="1000/1000" />
     <div>
       {#if show.meta}

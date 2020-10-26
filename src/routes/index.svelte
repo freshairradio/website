@@ -108,11 +108,11 @@
     </h1>
   {/if}
   <div
-    class="h-96 rounded-3xl bg-white bg-opacity-25 bg-gray-800 flex mx-4"
+    class="h-72 lg:h-96 rounded-3xl  bg-opacity-25 bg-gray-800 flex mx-4"
     bind:clientHeight={h}
     bind:clientWidth={w}>
     <Control
-      tailwind="z-20  my-32 mx-auto w-32 h-32 bg-gray-800 rounded-full"
+      tailwind="z-20 my-auto mx-auto w-20 h-20 lg:w-32 lg:h-32 bg-gray-800 rounded-full"
       click={() => {
         console.log('click', playingLive);
         if (playingLive) {
@@ -132,7 +132,7 @@
     recent posts
   </h1>
 
-  <div class="grid grid-cols-3 gap-4 px-4 pb-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 pb-4">
     {#each posts as post}
       <PostPreview {post} />
     {/each}

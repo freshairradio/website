@@ -22,6 +22,9 @@ module.exports = {
       transitionDuration: {
         0: "0ms",
         15000: "15000ms"
+      },
+      maxWidth: {
+        wide: "90rem"
       }
     }
   },
