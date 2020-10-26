@@ -28,7 +28,7 @@
   class="show relative block bg-gray-700 rounded-lg overflow-hidden {tailwind}">
   {#if show.picture}
     <img
-      class="cover absolute top-0 w-full rounded-lg"
+      class="object-cover absolute top-0 w-full rounded-lg"
       src={`https://imgproxy.freshair.radio/signature/fill/${size}/sm/1/plain/${show.picture}@jpg`}
       alt={show.title} />
   {/if}
@@ -38,7 +38,7 @@
       {show.title}
     </div>
     <img
-      class="cover absolute bottom-0 z-10 w-1/2 m-1 right-0"
+      class="object-cover absolute bottom-0 z-10 w-1/2 m-1 right-0"
       src={`https://imgproxy.freshair.radio/signature/fit/300/100/sm/1/plain/https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png@png`}
       alt="Logo" />
   {/if}
