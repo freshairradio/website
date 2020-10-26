@@ -46,11 +46,11 @@
   {#if post.feature_image}
     <img
       class="object-cover absolute top-0 w-full h-full"
-      src={`https://imgproxy.freshair.radio/signature/fill/400/400/sm/1/plain/${post.feature_image}@jpg`}
+      src={`https://imgproxy.freshair.radio/signature/fill/800/800/sm/1/plain/${post.feature_image}@jpg`}
       alt={post.title} />
   {/if}
   <div
-    class="text-right  absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0 w-full  z-10 text-white text-xl p-4 font-thin">
+    class="text-right  absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0 w-full  z-10 text-white text-xl p-4 font-thin rounded-b-lg">
     {#if rating}
       <div class="stars">
         {#each rating[0] as _}

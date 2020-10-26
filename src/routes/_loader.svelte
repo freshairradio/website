@@ -11,7 +11,8 @@
 </script>
 
 {#if show && loading}
-  <div class="fixed grid items-center justify-center w-screen h-screen">
+  <div
+    class="fixed grid items-center justify-center w-screen h-screen left-0 top-0">
     <svg
       viewBox="0 0 20 20"
       fill="currentColor"

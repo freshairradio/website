@@ -1,6 +1,6 @@
 <script>
   export let show;
-  export let size = "400/400";
+  export let size = "800/800";
   import { navigating } from "./_pagefade";
   import { prefetch, goto } from "@sapper/app";
   export let tailwind;
