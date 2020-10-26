@@ -26,7 +26,7 @@
     {#if show.meta && show.meta.byline}with {show.meta.byline}{/if}
   </h1>
   <section class="grid grid-cols-1 md:grid-cols-2 px-6 gap-4">
-    <ShowCover {show} size="1000/1000" />
+    <ShowCover {show} size="1000/1000" tailwind="bg-transparent" />
     <div>
       {#if show.meta}
         <ShowMetadata {show} />

@@ -41,8 +41,8 @@
 
         canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
 
-        canvasCtx.strokeStyle = "#ff8810";
-        canvasCtx.fillStyle = "#ff8810";
+        canvasCtx.strokeStyle = "#fff";
+        canvasCtx.fillStyle = "#fff";
 
         let sliceWidth = (WIDTH * 1.0) / (bufferLength / 64);
         canvasCtx.lineWidth = sliceWidth / 2;
