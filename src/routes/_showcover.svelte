@@ -1,0 +1,49 @@
+<script>
+  export let show;
+  export let size = "400/400";
+  import { navigating } from "./_pagefade";
+  import { prefetch, goto } from "@sapper/app";
+  export let tailwind;
+</script>
+
+<style>
+  .show:before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    padding-bottom: 100%;
+  }
+  .gradient {
+    background: linear-gradient(rgba(35, 7, 77, 0.8), rgba(204, 83, 51, 0.8));
+  }
+</style>
+
+<a
+  rel="prefetch"
+  on:click|preventDefault={async () => {
+    navigating.start();
+    await prefetch(`/shows/${show.slug}`);
+    await goto(`/shows/${show.slug}`);
+    navigating.end();
+  }}
+  href="/shows/{show.slug}"
+  class="show relative block bg-transparent rounded-lg overflow-hidden {tailwind}">
+  {#if show.picture}
+    <img
+      class="cover absolute top-0 w-full rounded-lg"
+      src={`https://imgproxy.freshair.radio/signature/fill/${size}/sm/1/plain/${show.picture}@jpg`}
+      alt={show.title} />
+  {/if}
+  {#if !show.picture}
+    <div
+      class=" text-center title absolute gradient top-0 left-0 w-full h-full z-10 text-white text-3xl p-4 font-thin">
+      {show.title}
+    </div>
+    <img
+      class="cover absolute bottom-0 z-10 w-1/2 m-1 right-0"
+      src={`https://imgproxy.freshair.radio/signature/fit/300/100/sm/1/plain/https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png@png`}
+      alt="Logo" />
+  {/if}
+  <slot />
+</a>

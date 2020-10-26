@@ -5,7 +5,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true
   },
-  purge: ["./src/**/*.svelte"],
+
   theme: {
     extend: {
       fontFamily: {
@@ -18,6 +18,10 @@ module.exports = {
         72: "18rem",
         84: "21rem",
         96: "24rem"
+      },
+      transitionDuration: {
+        0: "0ms",
+        15000: "15000ms"
       }
     }
   },
