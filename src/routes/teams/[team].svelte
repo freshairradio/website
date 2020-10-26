@@ -41,6 +41,9 @@
   const { preloading, page, session } = stores();
 </script>
 
+<svelte:head>
+  <title>{team.name} Team | Freshair</title>
+</svelte:head>
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
   <div class="mx-4">

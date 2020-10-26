@@ -90,17 +90,19 @@
   }
   .gradient {
     background: linear-gradient(rgba(35, 7, 77, 1), rgba(204, 83, 51, 1));
+  }
+  .behind {
     z-index: -1;
   }
 </style>
 
 <div
-  class="{menuOpen ? 'z-30 bg-gray-800 bg-opacity-75' : 'gradient'}  fixed top-0 left-0 h-full w-full" />
+  class="{menuOpen ? 'z-30 bg-gray-800 bg-opacity-75' : 'bg-gray-800 behind'}  fixed top-0 left-0 h-full w-full" />
 <div
-  class="gradient fixed top-0 left-0 h-full w-full transition-opacity duration-15000 {showing === 'a' ? 'opacity-1' : 'opacity-0'}"
+  class="gradient behind fixed top-0 left-0 h-full w-full transition-opacity duration-15000 {showing === 'a' ? 'opacity-1' : 'opacity-0'}"
   style="background: linear-gradient({gradientA.join(',')})" />
 <div
-  class="gradient fixed top-0 left-0 h-full w-full transition-opacity duration-15000 {showing === 'b' ? 'opacity-1' : 'opacity-0'}"
+  class="gradient behind fixed top-0 left-0 h-full w-full transition-opacity duration-15000 {showing === 'b' ? 'opacity-1' : 'opacity-0'}"
   style="background: linear-gradient({gradientB.join(',')})" />
 <div class="max-w-wide mx-auto">
   <nav

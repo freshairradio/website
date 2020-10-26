@@ -7,7 +7,9 @@
     color: white !important;
   }
 </style>
-
+<svelte:head>
+  <title>Get Involved</title>
+</svelte:head>
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
   <div class="mx-4">

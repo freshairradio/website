@@ -61,6 +61,9 @@
   }
 </style>
 
+<svelte:head>
+  <title>{post.title} | Freshair</title>
+</svelte:head>
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
   <div class="relative rounded-3xl overflow-hidden mx-4">
@@ -69,7 +72,7 @@
       src={`https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${post.feature_image || 'https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png'}@png`}
       alt="Logo" />
     <div
-      class="text-right w-full absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0   z-10 text-white text-xl  font-thin  rounded-b-3xl">
+      class="text-right w-full absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0   z-10 text-white text-xl  font-thin  rounded-b-3xl px-4">
       <div class="mx-auto max-w-3xl">
         {#if rating}
           <div class="stars">

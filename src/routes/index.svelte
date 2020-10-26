@@ -87,7 +87,9 @@
     };
   });
 </script>
-
+<svelte:head>
+  <title>Freshair Radio</title>
+</svelte:head>
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
   {#if $currentShowInfo.title}
