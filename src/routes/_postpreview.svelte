@@ -45,7 +45,7 @@
   class="post relative block bg-gray-700 rounded-lg overflow-hidden">
   {#if post.feature_image}
     <img
-      class="cover absolute top-0 w-full h-full"
+      class="object-cover absolute top-0 w-full h-full"
       src={`https://imgproxy.freshair.radio/signature/fill/400/400/sm/1/plain/${post.feature_image}@jpg`}
       alt={post.title} />
   {/if}

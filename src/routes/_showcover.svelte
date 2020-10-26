@@ -14,9 +14,6 @@
     width: 0;
     padding-bottom: 100%;
   }
-  .gradient {
-    background: linear-gradient(rgba(35, 7, 77, 0.8), rgba(204, 83, 51, 0.8));
-  }
 </style>
 
 <a
@@ -28,7 +25,7 @@
     navigating.end();
   }}
   href="/shows/{show.slug}"
-  class="show relative block bg-transparent rounded-lg overflow-hidden {tailwind}">
+  class="show relative block bg-gray-700 rounded-lg overflow-hidden {tailwind}">
   {#if show.picture}
     <img
       class="cover absolute top-0 w-full rounded-lg"
@@ -37,7 +34,7 @@
   {/if}
   {#if !show.picture}
     <div
-      class=" text-center title absolute gradient top-0 left-0 w-full h-full z-10 text-white text-3xl p-4 font-thin">
+      class=" text-center title absolute bg-black top-0 left-0 w-full h-full z-10 text-white text-3xl p-4 font-thin">
       {show.title}
     </div>
     <img
