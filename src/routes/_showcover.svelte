@@ -14,6 +14,10 @@
     width: 0;
     padding-bottom: 100%;
   }
+
+  a {
+    height: max-content;
+  }
 </style>
 
 <a
