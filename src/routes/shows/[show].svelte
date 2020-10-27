@@ -14,6 +14,10 @@
   import { stores } from "@sapper/app";
   import { navigating } from "../_pagefade";
   const { preloading, page, session } = stores();
+
+  console.log(show.episodes);
+  let sortedEpisodes = show.episodes;
+
 </script>
 
 <svelte:head>

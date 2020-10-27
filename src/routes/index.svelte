@@ -18,6 +18,7 @@
   import ShowCover from "./_showcover.svelte";
   import Control from "./_control.svelte";
   import PostPreview from "./_postpreview.svelte";
+  import SpookyGhost from "./_spookyghost.svelte";
   let canvas;
   export let posts;
   let w;
@@ -92,6 +93,7 @@
 </svelte:head>
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
+  <SpookyGhost />
   {#if $currentShowInfo.title}
     <div
       class="rounded-3xl bg-white bg-opacity-25 bg-gray-800 relative mb-6 overflow-hidden mx-4">
