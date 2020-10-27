@@ -2,7 +2,7 @@
   import { sample } from "lodash";
   import sc from "./_schedule.js";
   import { nowplaying, currentShowInfo } from "./_nowplaying.store.js";
-
+  import SpookyGhost from "./_spookyghost.svelte";
   let schedule = sc.schedule;
   const updateBroadcastInfo = async () => {
     let date = new Date();
@@ -307,6 +307,7 @@
     </div>
   </main>
 </div>
+<SpookyGhost />
 <audio
   crossorigin="anonymous"
   src={$audio.src}
