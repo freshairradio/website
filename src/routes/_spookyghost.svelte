@@ -180,9 +180,9 @@ Attempting to bring a version of Jordan Jenkins' Halloween ghost to life in the 
     }
   }
   import { onMount } from "svelte";
-
+  let scene;
   onMount(() => {
-    let ghost = new Ghost(document.querySelector(".scene-container"));
+    let ghost = new Ghost(scene);
 
     ghost.hover();
     ghost.startActivity();
@@ -274,11 +274,11 @@ body {
   .scene-container:focus {
     outline: none;
   }
-  .scene-container.run-away .ghost {
+  :global(.scene-container.run-away .ghost) {
     transform: rotateX(-10deg) scale3d(1.4, 4, 1) translate3d(0, 130%, -30px);
     transition: transform 800ms ease;
   }
-  .scene-container.descend .ghost {
+  :global(.scene-container.descend .ghost) {
     transform: translate3d(0, 130%, 0);
   }
 
@@ -297,7 +297,7 @@ body {
     z-index: 1;
     transition: transform 2000ms ease-out;
   }
-  .ghost.hover {
+  :global(.ghost.hover) {
     animation: hover 600ms ease-in-out infinite alternate;
   }
 
@@ -343,7 +343,7 @@ body {
   .eye.right {
     right: 5px;
   }
-  .eye.blink {
+  :global(.eye.blink) {
     height: 0;
   }
 
@@ -379,10 +379,10 @@ body {
     border-radius: 100%;
     background-color: #271917;
   }
-  .mouth.open .mouth-bottom {
+  :global(.scene-container .mouth.open .mouth-bottom) {
     height: 16px;
   }
-  .mouth.closed .mouth-bottom {
+  :global(.scene-container .mouth.closed .mouth-bottom) {
     height: 0;
   }
 
@@ -425,7 +425,7 @@ body {
     top: 5px;
     transform-origin: bottom center;
   }
-  .ghost-hand.hand-left.waving {
+  :global(.ghost-hand.hand-left.waving) {
     animation: waving 400ms linear;
   }
   .ghost-hand.hand-right {
@@ -459,7 +459,7 @@ body {
   .shadow-container {
     transition: transform 800ms ease;
   }
-  .shadow-container.disappear {
+  :global(.shadow-container.disappear) {
     transform: scale3d(0, 1, 1);
     transition: transform 400ms ease;
   }
@@ -596,7 +596,7 @@ body {
     animation-delay: 1000ms;
   }
 
-  .move-stars-out .star-element {
+  :global(.move-stars-out .star-element) {
     animation: star-entrance 1500ms;
   }
 
@@ -664,7 +664,7 @@ body {
     animation-delay: 1000ms;
   }
 
-  .move-stars-in .star-element {
+  :global(.move-stars-in .star-element) {
     animation: star-exit 400ms linear;
   }
   .move-stars-in .star-1 .star-element {
@@ -687,7 +687,7 @@ body {
   }
 </style>
 
-<div class="scene-container stars-out spooky ghost" tabindex="1">
+<div class="scene-container stars-out spooky ghost" bind:this={scene}>
   <div class="ghost-container">
     <div class="ghost">
       <div class="ghost-head">
