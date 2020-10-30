@@ -270,13 +270,14 @@ body {
     width: 140px;
     height: 160px;
     padding: none;
+    z-index: 10;
   }
   .scene-container:focus {
     outline: none;
   }
   :global(.scene-container.run-away .ghost) {
     transform: rotateX(-10deg) scale3d(1.4, 4, 1) translate3d(0, 130%, -30px);
-    transition: transform 800ms ease;
+    transition: transform 600ms ease;
   }
   :global(.scene-container.descend .ghost) {
     transform: translate3d(0, 130%, 0);
@@ -294,8 +295,7 @@ body {
   .ghost {
     position: relative;
     height: 115px;
-    z-index: 1;
-    transition: transform 2000ms ease-out;
+    transition: transform 600ms ease-out;
   }
   :global(.ghost.hover) {
     animation: hover 600ms ease-in-out infinite alternate;
@@ -458,6 +458,7 @@ body {
 
   .shadow-container {
     transition: transform 800ms ease;
+    display: none;
   }
   :global(.shadow-container.disappear) {
     transform: scale3d(0, 1, 1);
