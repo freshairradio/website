@@ -307,9 +307,7 @@
     </div>
   </main>
 </div>
-  {#if !$navigating}
-  <SpookyGhost />
-  {/if}
+<SpookyGhost />
 <audio
   crossorigin="anonymous"
   src={$audio.src}

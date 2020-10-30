@@ -28,16 +28,16 @@ Attempting to bring a version of Jordan Jenkins' Halloween ghost to life in the 
       this.scene = this.clone.cloneNode(true);
       this.resetRefs();
       this.scene.classList.remove("stars-out");
-      this.scene.style.position = "absolute";
+      this.scene.style.position = "fixed";
       this.scene.style.left =
         Math.floor(
           Math.random() *
-            (document.querySelector("body").getBoundingClientRect().width - 140)
+            (window.innerWidth - 140)
         ) + "px";
       this.scene.style.top =
         Math.floor(
           Math.random() *
-            (document.querySelector("body").getBoundingClientRect().height -
+            (window.innerHeight -
               160)
         ) + "px";
       this.scene.classList.add("descend");
