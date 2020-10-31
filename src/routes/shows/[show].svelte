@@ -16,7 +16,18 @@
   const { preloading, page, session } = stores();
 
   let today = Date.now();
-  let sortedEpisodes = show.episodes.filter(episode => new Date(episode.scheduling.week) <= today || episode.scheduling.week == null);
+  // Filter out episodes which have not yet aired
+  let sortedEpisodes = show.episodes.filter(function (episode) {
+    let day = new Date(episode.scheduling.week);
+    day.setDate(day.getDate() + show.meta.day + 1);
+    day.setHours(show.meta.time.substring(0,2));
+
+    return (episode.scheduling.week == null || day <= today);
+  });
+  // Sort the episodes by most recently created
+  sortedEpisodes.sort( function(episodeA, episodeB) {
+    return new Date(episodeA.created) - new Date(episodeB.created);
+  }).reverse();
 
 </script>
 
