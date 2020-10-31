@@ -15,8 +15,8 @@
   import { navigating } from "../_pagefade";
   const { preloading, page, session } = stores();
 
-  console.log(show.episodes);
-  let sortedEpisodes = show.episodes;
+  let today = Date.now();
+  let sortedEpisodes = show.episodes.filter(episode => new Date(episode.scheduling.week) <= today || episode.scheduling.week == null);
 
 </script>
 
@@ -43,7 +43,7 @@
   <div class="pb-2">
     {#if show.episodes}
       <section>
-        {#each show.episodes as episode}
+        {#each sortedEpisodes as episode}
           <Episode {episode} {show} />
         {/each}
       </section>
