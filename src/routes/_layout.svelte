@@ -240,7 +240,7 @@
     <a href="/" class="hidden lg:block">
       <img
         class="object-contain absolute bottom-0 z-10 w-full m-1 right-0 left-0"
-        src={`https://imgproxy.freshair.radio/signature/fit/300/100/sm/1/plain/https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png@png`}
+        src={`https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png`}
         alt="Logo" /></a>
   </nav>
   <nav
@@ -297,7 +297,7 @@
     <a href="/" on:click={() => (menuOpen = false)}>
       <img
         class="object-contain bottom-0 z-10 w-56 h-full right-0 ml-auto"
-        src={`https://imgproxy.freshair.radio/signature/fit/300/100/sm/1/plain/https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png@png`}
+        src={`https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png`}
         alt="Logo" /></a>
   </nav>
   <Loader loading={$navigating} />
