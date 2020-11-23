@@ -6,6 +6,7 @@ export default {
       hour16: "its-easy-being-green",
       hour17: "news-hub-show",
       hour18: "the-ellen-show",
+      hour19: "just-girly-things",
       hour20: "gay-and-afraid",
     },
     day2: {
