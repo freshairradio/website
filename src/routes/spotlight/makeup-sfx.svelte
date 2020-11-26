@@ -22,11 +22,12 @@
 <div class="fixed top-0 left-0 w-screen h-screen bg-black z-50" />
 <img
   class="object-contain w-screen h-screen fixed top-0 left-0 bg-white z-50"
-  style="filter:blur(20px)"
+  style="filter:blur(20px);background:#b6184b"
   src={`https://cdn.freshair.radio/spotlight/makeup.jpg`} />
 <div
   class="fixed w-screen left-0 top-0 z-50 p-6 bg-opacity-50 bg-white h-screen overflow-auto mb-12">
   <img
+    style="background:#b6184b"
     class="object-contain h-64 lg:h-72 w-full lg:w-1/2 lg:mx-auto border-2 border-black rounded-3xl bg-white  z-50 relative"
     src={`https://cdn.freshair.radio/spotlight/makeup.jpg`} />
   <Play {show} {episode} />
