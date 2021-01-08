@@ -9,14 +9,14 @@
     return stars
       ? [
           [...Array(parseInt(stars))].map((n) => "*").join(""),
-          [...Array(empty)].map((n) => "*").join("")
+          [...Array(empty)].map((n) => "*").join(""),
         ]
       : null;
   };
 
   export async function preload({ path, params, query }) {
     const article = await this.fetch(
-      `https://content.freshair.org.uk/ghost/api/canary/content/posts/slug/${params.slug}?key=335cdc08c8018af3c8cbb85c64&include=authors,tags`
+      `https://content.freshair.radio/ghost/api/canary/content/posts/slug/${params.slug}?key=34b251f66e79e35d36bf9d1629&include=authors,tags`
     )
       .then((r) => r.json())
       .then(({ posts }) => {
@@ -31,7 +31,7 @@
     );
     if (team) {
       let related = await this.fetch(
-        `https://content.freshair.org.uk/ghost/api/canary/content/posts/?key=335cdc08c8018af3c8cbb85c64&filter=tag:${team.slug}%2btag:hash-article&limit=3&fields=id,title,slug,feature_image&include=authors,tags`
+        `https://content.freshair.radio/ghost/api/canary/content/posts/?key=34b251f66e79e35d36bf9d1629&filter=tag:${team.slug}%2btag:hash-article&limit=3&fields=id,title,slug,feature_image&include=authors,tags`
       )
         .then((response) => response.json())
         .then(({ posts }) => {

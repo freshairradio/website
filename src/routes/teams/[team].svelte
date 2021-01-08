@@ -3,27 +3,27 @@
     music: {
       name: "Music",
       picture:
-        "https://cdn.freshair.radio/images/large/009fc28ec0593bf133390072c6d49e39"
+        "https://cdn.freshair.radio/images/large/009fc28ec0593bf133390072c6d49e39",
     },
     arts: {
       name: "Arts",
       picture:
-        "https://cdn.freshair.radio/images/large/2c64352f6500c8ac204fa6d362ff7970"
+        "https://cdn.freshair.radio/images/large/2c64352f6500c8ac204fa6d362ff7970",
     },
     sports: {
       name: "Sports",
       picture:
-        "https://cdn.freshair.radio/images/large/2c64352f6500c8ac204fa6d362ff7970"
+        "https://cdn.freshair.radio/images/large/2c64352f6500c8ac204fa6d362ff7970",
     },
     news: {
       name: "News",
       picture:
-        "https://cdn.freshair.radio/images/large/2c64352f6500c8ac204fa6d362ff7970"
-    }
+        "https://cdn.freshair.radio/images/large/2c64352f6500c8ac204fa6d362ff7970",
+    },
   };
   export function preload({ path, params, query }) {
     return this.fetch(
-      `https://content.freshair.org.uk/ghost/api/canary/content/posts/?key=335cdc08c8018af3c8cbb85c64&filter=tag:hash-${params.team}-team%2btag:hash-article&limit=30&fields=id,title,slug,feature_image&include=authors,tags`
+      `https://content.freshair.radio/ghost/api/canary/content/posts/?key=34b251f66e79e35d36bf9d1629&filter=tag:hash-${params.team}-team%2btag:hash-article&limit=30&fields=id,title,slug,feature_image&include=authors,tags`
     )
       .then((r) => r.json())
       .then(({ posts }) => {
