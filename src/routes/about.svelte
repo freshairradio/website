@@ -6,6 +6,29 @@
   .prose :global(*) {
     color: white !important;
   }
+  .join-button {
+    text-transform: lowercase;
+    color:white!important;
+    text-decoration:none;
+    padding-top: 0.4rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+
+    -webkit-transition: background .5s ease-out;
+    -moz-transition: background .5s ease-out;
+    -o-transition: background .5s ease-out;
+    transition: background .5s ease-out;
+
+    -webkit-transition: color .3s ease-out;
+    -moz-transition: color .3s ease-out;
+    -o-transition: color .3s ease-out;
+    transition: color .3s ease-out;
+  }
+  .join-button:hover {
+    background: rgb(255, 255, 255, 1);
+    color: black!important;
+  }
 </style>
 
 <svelte:head>
@@ -44,8 +67,7 @@
       <a
         href="mailto:music@freshair.radio"
         class="ml-auto bg-white p-2 s
-          py-1 rounded-lg text-lg no-underline"
-        style="color:black!important;text-decoration:none">Join</a>
+          rounded-lg text-lg no-underline lowercase join-button">Join</a>
     </h3>
     <p>
       FreshAir’s music team is responsible for much of the station’s music
@@ -74,8 +96,7 @@
       <a
         href="mailto:arts@freshair.radio"
         class="ml-auto bg-white p-2 s
-          py-1 rounded-lg text-lg no-underline"
-        style="color:black!important;text-decoration:none">Join</a>
+          py-1 rounded-lg text-lg no-underline lowercase join-button">Join</a>
     </h3>
     <p>
       Arts journalism is an exciting way to get stuck-in with all things
@@ -98,8 +119,7 @@
       <a
         href="mailto:sports@freshair.radio"
         class="ml-auto bg-white p-2
-          s py-1 rounded-lg text-lg no-underline"
-        style="color:black!important;text-decoration:none">Join</a>
+          s py-1 rounded-lg text-lg no-underline lowercase join-button">Join</a>
     </h3>
     <p>
       Calling all sports fans! FreshAir Sport is looking to add to our ranks for
@@ -118,8 +138,7 @@
       <a
         href="mailto:news@freshair.radio"
         class="ml-auto bg-white p-2 s
-          py-1 rounded-lg text-lg no-underline"
-        style="color:black!important;text-decoration:none">Join</a>
+          py-1 rounded-lg text-lg no-underline lowercase join-button">Join</a>
     </h3>
     <p>
       Are you a news junkie? Have you got any interest in journalism? Do people
@@ -133,8 +152,7 @@
       <a
         href="mailto:production@freshair.radio"
         class="ml-auto
-          bg-white p-2 s py-1 rounded-lg text-lg no-underline"
-        style="color:black!important;text-decoration:none">Join</a>
+          bg-white p-2 s py-1 rounded-lg text-lg no-underline lowercase join-button">Join</a>
     </h3>
     <p>
       The Production Team is what makes FreshAir such a high quality station.
@@ -152,8 +170,7 @@
       <a
         href="mailto:design@freshair.radio"
         class="ml-auto bg-white p-2
-          s py-1 rounded-lg text-lg no-underline"
-        style="color:black!important;text-decoration:none">Join</a>
+          s py-1 rounded-lg text-lg no-underline lowercase join-button">Join</a>
     </h3>
     <p>
       If you are a keen drawer, painter, animator, collagist, photographer,
