@@ -53,6 +53,7 @@
   export let related;
   import { stores } from "@sapper/app";
   const { preloading, page, session } = stores();
+  $: post_image = `https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${post.feature_image || 'https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png'}@png`
 </script>
 
 <style>
@@ -63,13 +64,19 @@
 
 <svelte:head>
   <title>{post.title} | Freshair</title>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@freshairradio" />
+  <meta property="og:url" content="https://freshair.radio/postst/{post.slug}" />
+  <meta property="og:title" content="{post.title}" />
+  <meta property="og:description" content="{post.excerpt}" />
+  <meta property="og:image" content="{post_image}" />
 </svelte:head>
 <section
   class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
   <div class="relative rounded-3xl overflow-hidden mx-4">
     <img
       class="object-cover w-full h-72 lg:h-96 rounded-3xl bg-gray-800"
-      src={`https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${post.feature_image || 'https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png'}@png`}
+      src={post_image}
       alt="Logo" />
     <div
       class="text-right w-full absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0   z-10 text-white text-xl  font-thin  rounded-b-3xl px-4">
