@@ -49,7 +49,7 @@
   <div class="mx-4">
     <img
       class="object-cover w-full h-72 lg:h-96 rounded-3xl bg-white bg-opacity-50 "
-      src={`https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${team.picture}@jpg`} />
+      src="https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/{team.picture}@jpg" />
   </div>
   <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
     the
