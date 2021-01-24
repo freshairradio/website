@@ -23,7 +23,7 @@
   };
   export function preload({ path, params, query }) {
     return this.fetch(
-      `https://content.freshair.radio/ghost/api/canary/content/posts/?key=34b251f66e79e35d36bf9d1629&filter=tag:hash-${params.team}-team%2btag:hash-article&limit=30&fields=id,title,slug,feature_image&include=authors,tags`
+      `https://content.freshair.radio/ghost/api/canary/content/posts/?key=34b251f66e79e35d36bf9d1629&filter=tag:${params.team}&limit=30&fields=id,title,slug,feature_image&include=authors,tags`
     )
       .then((r) => r.json())
       .then(({ posts }) => {
