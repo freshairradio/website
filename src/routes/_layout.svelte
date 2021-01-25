@@ -1,16 +1,48 @@
+<script context="module">
+  export function preload({ path, params, query }) {
+    return this.fetch(`https://api.freshair.radio/public/shows`)
+      .then((r) => r.json())
+      .then((shows) => ({ shows }));
+  }
+</script>
+
 <script>
   import { sample } from "lodash";
-  import sc from "./_schedule.js";
-  import { nowplaying, currentShowInfo } from "./_nowplaying.store.js";
-  let schedule = sc.schedule;
+  import { nowplaying } from "./_nowplaying.store.js";
+  const sort = (shows) => {
+    let byDay = {};
+    shows.forEach((show) => {
+      byDay[show.meta.day] = (byDay[show.meta.day]
+        ? [...byDay[show.meta.day], show]
+        : [show]
+      ).sort((a, b) => a.meta.time.localeCompare(b.meta.time));
+    });
+    return byDay;
+  };
+  export let shows = [];
+  $: byDate = sort(shows);
+  const toDay = (i) =>
+    [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ][i];
 
   const updateBroadcastInfo = async () => {
     let date = new Date();
-    let clientHour = "hour" + date.getUTCHours();
-    let clientDay = "day" + date.getUTCDay();
+    let clientHour = date.getUTCHours();
+    let clientDay = date.getUTCDay();
 
-    if (schedule[clientDay][clientHour] != "") {
-      nowplaying.set(schedule[clientDay][clientHour]);
+    if (byDate[clientDay].find((s) => s.meta.time == `${clientHour}:00`)) {
+      nowplaying.set(
+        byDate[clientDay].find((s) => s.meta.time == `${clientHour}:00`)
+      );
+    } else {
+      nowplaying.set({});
     }
     setTimeout(updateBroadcastInfo, 30000);
   };
@@ -42,7 +74,6 @@
     return () => clearInterval(i);
   });
   import Navitem from "./_navitem.svelte";
-  import NavItem from "./_navitem.svelte";
   import { audio, seeking } from "./_audio.store.js";
   import { writable } from "svelte/store";
   import ShowCover from "./_showcover.svelte";
@@ -50,7 +81,6 @@
   import { stores } from "@sapper/app";
   const { page, session } = stores();
   import Loader from "./_loader.svelte";
-  import Showcover from "./_showcover.svelte";
   import { navigating } from "./_pagefade";
   const width = writable();
   $: playingLive = $audio.live && $audio.volume == 1;
@@ -102,8 +132,8 @@
       : 'w-0'} lg:w-56 h-full fixed"
   >
     <section class="hidden lg:block show m-4 -mb-2">
-      {#if $currentShowInfo.title && ($audio.live || !$audio.podcast)}
-        <ShowCover show={$currentShowInfo}>
+      {#if $nowplaying.title && ($audio.live || !$audio.podcast)}
+        <ShowCover show={$nowplaying}>
           <Control
             tailwind="z-20 absolute top-0 left-0 m-12 p-1 w-1/2 h-1/2 bg-gray-800 rounded-full"
             click={() => {

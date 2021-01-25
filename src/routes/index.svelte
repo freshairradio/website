@@ -11,7 +11,7 @@
 </script>
 
 <script>
-  import { currentShowInfo } from "./_nowplaying.store.js";
+  import { nowplaying } from "./_nowplaying.store.js";
   import { navigating } from "./_pagefade.js";
   import { audio } from "./_audio.store.js";
   import { onMount } from "svelte";
@@ -92,16 +92,20 @@
   <title>Freshair Radio</title>
 </svelte:head>
 <section
-  class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
-  {#if $currentShowInfo.title}
+  class="transition-opacity duration-300 {$navigating
+    ? 'opacity-0'
+    : 'opacity-1'}"
+>
+  {#if $nowplaying.title}
     <div
-      class="rounded-3xl bg-white bg-opacity-25 bg-gray-800 relative mb-6 overflow-hidden mx-4">
+      class="rounded-3xl bg-white bg-opacity-25 bg-gray-800 relative mb-6 overflow-hidden mx-4"
+    >
       <h1 class="text-3xl text-white p-6 font-thin lowercase my-auto">
-        <strong>{$currentShowInfo.title}</strong>
+        <strong>{$nowplaying.title}</strong>
         is live now
-        {#if $currentShowInfo.meta.byline}
+        {#if $nowplaying.meta.byline}
           with
-          <strong>{$currentShowInfo.meta.byline}</strong>
+          <strong>{$nowplaying.meta.byline}</strong>
         {/if}
       </h1>
     </div>
@@ -113,23 +117,26 @@
   <div
     class="h-72 lg:h-96 rounded-3xl  bg-opacity-25 bg-gray-800 flex mx-4"
     bind:clientHeight={h}
-    bind:clientWidth={w}>
+    bind:clientWidth={w}
+  >
     <Control
       tailwind="z-20 my-auto mx-auto w-20 h-20 lg:w-32 lg:h-32 bg-gray-800 rounded-full"
       click={() => {
-        console.log('click', playingLive);
+        console.log("click", playingLive);
         if (playingLive) {
           audio.pauseLive();
         } else {
           audio.playLive();
         }
       }}
-      playing={playingLive} />
+      playing={playingLive}
+    />
     <canvas
       class="waveform absolute top-0"
       bind:this={canvas}
       width={w}
-      height={h} />
+      height={h}
+    />
   </div>
   <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
     recent posts
