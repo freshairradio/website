@@ -44,7 +44,7 @@
     ? 'opacity-0'
     : 'opacity-1'}"
 >
-  <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
+  <h1 class="text-4xl text-white pt-6 px-4 font-thin lowercase">
     Schedule
     <strong>2021</strong>
   </h1>
