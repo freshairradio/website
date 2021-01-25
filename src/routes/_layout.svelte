@@ -35,7 +35,7 @@
   const updateBroadcastInfo = async () => {
     let date = new Date();
     let clientHour = date.getUTCHours();
-    let clientDay = date.getUTCDay();
+    let clientDay = (date.getUTCDay() + 1) % 7;
 
     if (byDate[clientDay].find((s) => s.meta.time == `${clientHour}:00`)) {
       nowplaying.set(
