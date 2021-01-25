@@ -20,7 +20,6 @@
         : [show]
       ).sort((a, b) => a.meta.time.localeCompare(b.meta.time));
     });
-    console.log(byDay);
     return byDay;
   };
   export let shows = [];
