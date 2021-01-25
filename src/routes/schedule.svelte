@@ -70,7 +70,7 @@
               }}
               href="/shows/{show.slug}"
               class="flex gap-2 bg-white bg-opacity-25 rounded-lg">
-              <ShowCover {show} tailwind="w-40 h-40 " />
+              <ShowCover {show} class="w-40 h-40" />
               <h3 class="text-2xl text-white  font-thin w-full p-2 self-center">
                 {show.title}
               </h3>

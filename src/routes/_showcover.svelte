@@ -3,22 +3,9 @@
   export let size = "800/800";
   import { navigating } from "./_pagefade";
   import { prefetch, goto } from "@sapper/app";
-  export let tailwind;
+  let tailwind;
+  export { tailwind as class };
 </script>
-
-<style>
-  .show:before {
-    content: "";
-    display: block;
-    height: 0;
-    width: 0;
-    padding-bottom: 100%;
-  }
-
-  a {
-    height: max-content;
-  }
-</style>
 
 <a
   rel="prefetch"
@@ -34,17 +21,34 @@
     <img
       class="object-cover absolute top-0 w-full rounded-lg"
       src={`https://imgproxy.freshair.radio/signature/fill/${size}/sm/1/plain/${show.picture}@jpg`}
-      alt={show.title} />
+      alt={show.title}
+    />
   {/if}
   {#if !show.picture}
     <div
-      class=" text-center title absolute bg-black top-0 left-0 w-full h-full z-10 text-white text-3xl p-4 font-thin">
+      class=" text-center title absolute bg-black top-0 left-0 w-full h-full z-10 text-white text-3xl p-4 font-thin"
+    >
       {show.title}
     </div>
     <img
       class="object-cover absolute bottom-0 z-10 w-1/2 m-1 right-0"
       src={`https://imgproxy.freshair.radio/signature/fit/300/100/sm/1/plain/https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png@png`}
-      alt="Logo" />
+      alt="Logo"
+    />
   {/if}
   <slot />
 </a>
+
+<style>
+  .show:before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    padding-bottom: 100%;
+  }
+
+  a {
+    height: max-content;
+  }
+</style>
