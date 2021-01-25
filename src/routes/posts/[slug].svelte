@@ -9,7 +9,7 @@
     return stars
       ? [
           [...Array(parseInt(stars))].map((n) => "*").join(""),
-          [...Array(empty)].map((n) => "*").join(""),
+          [...Array(empty)].map((n) => "*").join("")
         ]
       : null;
   };
@@ -53,33 +53,40 @@
   export let related;
   import { stores } from "@sapper/app";
   const { preloading, page, session } = stores();
-  $: post_image = `https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${post.feature_image || 'https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png'}@png`
+  $: post_image = `https://imgproxy.freshair.radio/signature/fill/2000/2000/sm/1/plain/${
+    post.feature_image ||
+    "https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png"
+  }@png`;
+  $: isReview = post && post.tags.find((t) => t.slug == "reviews");
+  $: isInterview = post && post.tags.find((t) => t.slug == "interviews");
+  $: isOpinion = post && post.tags.find((t) => t.slug == "opinion");
 </script>
-
-<style>
-  .prose :global(*) {
-    color: white !important;
-  }
-</style>
 
 <svelte:head>
   <title>{post.title} | Freshair</title>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@freshairradio" />
   <meta property="og:url" content="https://freshair.radio/postst/{post.slug}" />
-  <meta property="og:title" content="{post.title}" />
-  <meta property="og:description" content="{post.excerpt}" />
-  <meta property="og:image" content="{post_image}" />
+  <meta property="og:title" content={post.title} />
+  <meta property="og:description" content={post.excerpt} />
+  <meta property="og:image" content={post_image} />
 </svelte:head>
 <section
-  class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
+  class="transition-opacity duration-300 {$navigating
+    ? 'opacity-0'
+    : 'opacity-1'}"
+>
   <div class="relative rounded-3xl overflow-hidden mx-4">
     <img
       class="object-cover w-full h-72 lg:h-96 rounded-3xl bg-gray-800"
       src={post_image}
-      alt="Logo" />
+      alt="Logo"
+    />
     <div
-      class="text-right w-full absolute {!post.feature_image ? 'gradient' : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0   z-10 text-white text-xl  font-thin  rounded-b-3xl px-4">
+      class="text-right w-full absolute {!post.feature_image
+        ? 'gradient'
+        : ' bg-opacity-75 bg-gray-800'}  bottom-0 right-0   z-10 text-white text-xl  font-thin  rounded-b-3xl px-4"
+    >
       <div class="mx-auto max-w-3xl">
         {#if rating}
           <div class="stars">
@@ -95,7 +102,8 @@
                     stroke="none"
                     points="35.9928,10.7363 27.7913,27.3699 9.4394,30.0436
             22.7245,42.9838 19.5962,61.2637 36.0084,52.6276 52.427,61.2515
-            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638" />
+            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638"
+                  />
                 </g>
                 <g id="hair" />
                 <g id="skin" />
@@ -110,7 +118,8 @@
                     stroke-width="2"
                     points="35.9928,10.7363 27.7913,27.3699 9.4394,30.0436
             22.7245,42.9838 19.5962,61.2637 36.0084,52.6276 52.427,61.2515
-            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638" />
+            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638"
+                  />
                 </g>
               </svg>
             {/each}
@@ -126,7 +135,8 @@
                     stroke="none"
                     points="35.9928,10.7363 27.7913,27.3699 9.4394,30.0436
             22.7245,42.9838 19.5962,61.2637 36.0084,52.6276 52.427,61.2515
-            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638" />
+            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638"
+                  />
                 </g>
                 <g id="hair" />
                 <g id="skin" />
@@ -141,22 +151,30 @@
                     stroke-width="2"
                     points="35.9928,10.7363 27.7913,27.3699 9.4394,30.0436
             22.7245,42.9838 19.5962,61.2637 36.0084,52.6276 52.427,61.2515
-            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638" />
+            49.2851,42.9739 62.5606,30.0239 44.2067,27.3638"
+                  />
                 </g>
               </svg>
             {/each}
           </div>
         {/if}
         <h3 class="text-lg lg:text-xl">
-          <strong>{post.authors ? post.authors[0].name : '...'}</strong>
+          <strong
+            >{post.authors
+              ? `${isOpinion ? "Opinion: " : ""}${post.authors[0].name}${
+                  isReview || rating ? " reviews" : ""
+                }${isInterview ? " interviews" : ""}`
+              : "..."}</strong
+          >
         </h3>
-        <h2 class="text-2xl lg:text-3xl">{post.title || '...'}</h2>
+        <h2 class="text-2xl lg:text-3xl">{post.title || "..."}</h2>
       </div>
     </div>
   </div>
 
   <div
-    class="prose prose-md lg:prose-xl mx-auto mt-4 lg:mt-8 mb-8 px-4 overflow-hidden">
+    class="prose prose-md lg:prose-xl mx-auto mt-4 lg:mt-8 mb-8 px-4 overflow-hidden"
+  >
     {@html post.html}
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 pb-4">
@@ -165,3 +183,9 @@
     {/each}
   </div>
 </section>
+
+<style>
+  .prose :global(*) {
+    color: white !important;
+  }
+</style>
