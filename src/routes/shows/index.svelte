@@ -17,10 +17,13 @@
   <title>All Shows | Freshair</title>
 </svelte:head>
 <section
-  class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
+  class="transition-opacity duration-300 {$navigating
+    ? 'opacity-0'
+    : 'opacity-1'}"
+>
   <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
     On Air Shows
-    <strong>2020</strong>
+    <strong>2021</strong>
   </h1>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 pb-4">

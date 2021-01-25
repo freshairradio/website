@@ -25,6 +25,9 @@ module.exports = {
       },
       maxWidth: {
         wide: "90rem"
+      },
+      gridTemplateColumns: {
+        schedule: "min-content 1fr"
       }
     }
   },
