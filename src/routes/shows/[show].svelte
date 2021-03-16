@@ -9,6 +9,9 @@
 </script>
 
 <script>
+  import dayjs from "dayjs";
+  import isoWeek from "dayjs/plugin/isoWeek";
+  dayjs.extend(isoWeek);
   import ShowMetadata from "../_showmetadata.svelte";
   import ShowCover from "../_showcover.svelte";
   import Episode from "../_episode.svelte";
@@ -16,22 +19,13 @@
   import { stores } from "@sapper/app";
   import { navigating } from "../_pagefade";
   const { preloading, page, session } = stores();
-
-  let today = Date.now();
+  let today = dayjs();
   // Filter out episodes which have not yet aired
-  let sortedEpisodes = show.episodes.filter(function (episode) {
-    let day = new Date(episode.scheduling.week);
-    day.setDate(day.getDate() + show.meta.day + 1);
-    day.setHours(show.meta.time.substring(0, 2));
-
-    return episode.scheduling.week == null || day <= today;
+  let sortedEpisodes = show.episodes.sort(function (episodeA, episodeB) {
+    return dayjs(episodeA.created).isAfter(dayjs(episodeB.created)) ? 1 : -1;
   });
+
   // Sort the episodes by most recently created
-  sortedEpisodes
-    .sort(function (episodeA, episodeB) {
-      return new Date(episodeA.created) - new Date(episodeB.created);
-    })
-    .reverse();
 </script>
 
 <svelte:head>
@@ -42,11 +36,11 @@
     ? 'opacity-0'
     : 'opacity-1'}"
 >
-  <h1 class="text-4xl text-white p-6 px-6 font-thin">
+  <h1 class="p-6 px-6 text-4xl font-thin text-white">
     <strong>{show.title}</strong>
     {#if show.meta && show.meta.byline}with {show.meta.byline}{/if}
   </h1>
-  <section class="grid grid-cols-1 md:grid-cols-2 px-6 gap-4">
+  <section class="grid grid-cols-1 gap-4 px-6 md:grid-cols-2">
     <ShowCover {show} size="1000/1000" class="bg-transparent" />
     <div>
       {#if show.meta}

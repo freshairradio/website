@@ -12,10 +12,10 @@
   const sort = (shows) => {
     let byDay = {};
     shows.forEach((show) => {
-      byDay[show.meta.day] = (byDay[show.meta.day]
-        ? [...byDay[show.meta.day], show]
+      byDay[show.when.day] = (byDay[show.when.day]
+        ? [...byDay[show.when.day], show]
         : [show]
-      ).sort((a, b) => a.meta.time.localeCompare(b.meta.time));
+      ).sort((a, b) => a.when.hour.localeCompare(b.when.hour));
     });
     return byDay;
   };
@@ -35,7 +35,7 @@
   const updateBroadcastInfo = async () => {
     let date = new Date();
     let clientHour = date.getUTCHours();
-    let clientDay = (date.getUTCDay() - 1) % 7;
+    let clientDay = toDay((date.getUTCDay() - 1) % 7);
 
     if (byDate[clientDay].find((s) => s.meta.time == `${clientHour}:00`)) {
       nowplaying.set(
