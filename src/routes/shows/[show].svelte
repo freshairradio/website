@@ -1,6 +1,8 @@
 <script context="module">
   export function preload({ path, params, query }) {
-    return this.fetch(`https://api.freshair.radio/public/shows/${params.show}`)
+    return this.fetch(
+      `https://data.freshair.radio/v1/public/shows/${params.show}`
+    )
       .then((r) => r.json())
       .then((show) => ({ show }));
   }
@@ -20,22 +22,26 @@
   let sortedEpisodes = show.episodes.filter(function (episode) {
     let day = new Date(episode.scheduling.week);
     day.setDate(day.getDate() + show.meta.day + 1);
-    day.setHours(show.meta.time.substring(0,2));
+    day.setHours(show.meta.time.substring(0, 2));
 
-    return (episode.scheduling.week == null || day <= today);
+    return episode.scheduling.week == null || day <= today;
   });
   // Sort the episodes by most recently created
-  sortedEpisodes.sort( function(episodeA, episodeB) {
-    return new Date(episodeA.created) - new Date(episodeB.created);
-  }).reverse();
-
+  sortedEpisodes
+    .sort(function (episodeA, episodeB) {
+      return new Date(episodeA.created) - new Date(episodeB.created);
+    })
+    .reverse();
 </script>
 
 <svelte:head>
   <title>{show.title} | Freshair</title>
 </svelte:head>
 <section
-  class="transition-opacity duration-300 {$navigating ? 'opacity-0' : 'opacity-1'}">
+  class="transition-opacity duration-300 {$navigating
+    ? 'opacity-0'
+    : 'opacity-1'}"
+>
   <h1 class="text-4xl text-white p-6 px-6 font-thin">
     <strong>{show.title}</strong>
     {#if show.meta && show.meta.byline}with {show.meta.byline}{/if}

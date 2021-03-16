@@ -1,6 +1,6 @@
 <script context="module">
   export function preload({ path, params, query }) {
-    return this.fetch(`https://api.freshair.radio/public/shows`)
+    return this.fetch(`https://data.freshair.radio/v1/public/shows`)
       .then((r) => r.json())
       .then((shows) => ({ shows }));
   }
@@ -69,7 +69,8 @@
                 navigating.end();
               }}
               href="/shows/{show.slug}"
-              class="flex gap-2 bg-white bg-opacity-25 rounded-lg">
+              class="flex gap-2 bg-white bg-opacity-25 rounded-lg"
+            >
               <ShowCover {show} class="w-40 h-40" />
               <h3 class="text-2xl text-white  font-thin w-full p-2 self-center">
                 {show.title}

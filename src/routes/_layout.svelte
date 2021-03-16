@@ -1,6 +1,6 @@
 <script context="module">
   export function preload({ path, params, query }) {
-    return this.fetch(`https://api.freshair.radio/public/shows`)
+    return this.fetch(`https://data.freshair.radio/v1/public/shows`)
       .then((r) => r.json())
       .then((shows) => ({ shows }));
   }
@@ -125,13 +125,13 @@
     : 'opacity-0'}"
   style="background: linear-gradient({gradientB.join(',')})"
 />
-<div class="max-w-wide mx-auto">
+<div class="mx-auto max-w-wide">
   <nav
     class="overflow-hidden {menuOpen
       ? 'w-56 z-40'
       : 'w-0'} lg:w-56 h-full fixed"
   >
-    <section class="hidden lg:block show m-4 -mb-2">
+    <section class="hidden m-4 -mb-2 lg:block show">
       {#if $nowplaying.title && ($audio.live || !$audio.podcast)}
         <ShowCover show={$nowplaying}>
           <Control
@@ -169,8 +169,9 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-white inline-block mr-2"
-          stroke="currentColor">
+          class="inline-block w-6 h-6 mr-2 text-white"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -184,8 +185,9 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-white inline-block mr-2"
-          stroke="currentColor">
+          class="inline-block w-6 h-6 mr-2 text-white"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -199,8 +201,9 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-white inline-block mr-2"
-          stroke="currentColor">
+          class="inline-block w-6 h-6 mr-2 text-white"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -214,8 +217,9 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-white inline-block mr-2"
-          stroke="currentColor">
+          class="inline-block w-6 h-6 mr-2 text-white"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -229,8 +233,9 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-white inline-block mr-2"
-          stroke="currentColor">
+          class="inline-block w-6 h-6 mr-2 text-white"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -244,8 +249,9 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-white inline-block mr-2"
-          stroke="currentColor">
+          class="inline-block w-6 h-6 mr-2 text-white"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -259,8 +265,9 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-white inline-block mr-2"
-          stroke="currentColor">
+          class="inline-block w-6 h-6 mr-2 text-white"
+          stroke="currentColor"
+        >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -271,7 +278,7 @@
       </Navitem>
       <Navitem href="/schedule">
         <svg
-          class="w-6 h-6 text-white inline-block mr-2"
+          class="inline-block w-6 h-6 mr-2 text-white"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -287,23 +294,25 @@
     </ul>
     <a href="/" class="hidden lg:block">
       <img
-        class="object-contain absolute bottom-0 z-10 w-full m-1 right-0 left-0"
+        class="absolute bottom-0 left-0 right-0 z-10 object-contain w-full m-1"
         src={`https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png`}
         alt="Logo"
       /></a
     >
   </nav>
   <nav
-    class="bg-opacity-75 bg-gray-800 w-screen fixed lg:hidden h-16 bottom-0 left-0 fixed z-40 flex"
+    class="fixed bottom-0 left-0 z-40 flex w-screen h-16 bg-gray-800 bg-opacity-75 lg:hidden"
   >
     <button
-      class="mr-auto text-white h-16 w-16 cursor-pointer"
-      on:click={() => (menuOpen = !menuOpen)}>
+      class="w-16 h-16 mr-auto text-white cursor-pointer"
+      on:click={() => (menuOpen = !menuOpen)}
+    >
       <svg
         id="emoji"
         viewBox="0 0 72 72"
         xmlns="http://www.w3.org/2000/svg"
-        class="">
+        class=""
+      >
         <g id="color" />
         <g id="hair" />
         <g id="skin" />
@@ -350,15 +359,15 @@
     </button>
     <a href="/" on:click={() => (menuOpen = false)}>
       <img
-        class="object-contain bottom-0 z-10 w-56 h-full right-0 ml-auto"
+        class="bottom-0 right-0 z-10 object-contain w-56 h-full ml-auto"
         src={`https://cdn.freshair.radio/logos/FreshairFullWhiteLogo.png`}
         alt="Logo"
       /></a
     >
   </nav>
   <Loader loading={$navigating} />
-  <main class="block lg:ml-56  h-full  pt-4 lg:pr-4 pb-24 lg:pb-4">
-    <div class="min-h-full rounded-3xl  overflow-hidden">
+  <main class="block h-full pt-4 pb-24 lg:ml-56 lg:pr-4 lg:pb-4">
+    <div class="min-h-full overflow-hidden rounded-3xl">
       <slot />
     </div>
   </main>

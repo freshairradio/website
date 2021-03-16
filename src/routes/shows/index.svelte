@@ -1,6 +1,6 @@
 <script context="module">
   export function preload({ path, params, query }) {
-    return this.fetch(`https://api.freshair.radio/public/shows`)
+    return this.fetch(`https://data.freshair.radio/v1/public/shows`)
       .then((r) => r.json())
       .then((shows) => ({ shows }));
   }
