@@ -24,8 +24,8 @@
     <p>
       We'd love to have you involved! There are loads of ways to get involved
       with FreshAir, from presenting a show to managing music tech. Show
-      applications are closed for this semester, but they'll be re-opening in
-      January 2021, and in the meantime you can find out more about (and join!)
+      applications aren't open yet, but they'll be re-opening in
+      October 2021, and in the meantime you can find out more about (and join!)
       our different teams at
       <a href="/about" style="color:white">freshair.radio/about</a>.
     </p>
@@ -37,7 +37,7 @@
       or
       <a href="https://twitter.com/freshairradio">Twitter,</a>
       or send an email to
-      <a href="mailto:manager@freshair.radio">manager@freshair.org.uk</a>.
+      <a href="mailto:manager@freshair.radio">manager@freshair.radio</a>.
     </p>
   </div>
 </section>
