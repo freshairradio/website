@@ -244,7 +244,7 @@
           />
         </svg>News
       </Navitem>
-      <Navitem href="/get-involved">
+      <Navitem href="/about">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -260,7 +260,7 @@
           />
         </svg>Get Involved
       </Navitem>
-      <Navitem href="/about">
+      <!-- <Navitem href="/about">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -275,7 +275,7 @@
             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>About
-      </Navitem>
+      </Navitem> -->
       <Navitem href="/schedule">
         <svg
           class="inline-block w-6 h-6 mr-2 text-white"

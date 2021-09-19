@@ -29,6 +29,31 @@
     background: rgb(255, 255, 255, 1);
     color: black!important;
   }
+  .show-application-button {
+    text-transform: lowercase;
+    color:white!important;
+    text-decoration:none;
+    padding-top: 0.4rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    align-self: center;
+
+    -webkit-transition: background .5s ease-out;
+    -moz-transition: background .5s ease-out;
+    -o-transition: background .5s ease-out;
+    transition: background .5s ease-out;
+
+    -webkit-transition: color .3s ease-out;
+    -moz-transition: color .3s ease-out;
+    -o-transition: color .3s ease-out;
+    transition: color .3s ease-out;
+
+  }
+  .show-application-button:hover {
+    background: rgb(255, 255, 255, 1);
+    color: black!important;
+  }
 </style>
 
 <svelte:head>
@@ -44,8 +69,14 @@
 
   <div
     class="prose prose-md lg:prose-xl mx-auto mt-4 lg:mt-8 mb-8 px-4 overflow-hidden">
-    <h2>Hi! 👋</h2>
-    <p>We're FreshAir, Edinburgh's student radio station</p>
+
+    <h3 style="color:white" class="flex"><a
+    href="freshair.radio/apply"
+    class="mx-auto bg-white p-2 s
+      rounded-lg text-xl no-underline lowercase join-button">Show Applications are open!</a></h3>
+
+    <h2>Hi 👋</h2>
+    <p>We're FreshAir, Edinburgh's student radio station!</p>
 
     <p>
       <strong style="color:white">FreshAir is for everyone</strong>
@@ -55,12 +86,11 @@
       arts coverage.
     </p>
     <p>
-      To learn more about FreshAir and what we do, read on! If we've already
-      caught your interest, head on over to
-      <a
-        href="/get-involved"
-        style="color:white">freshair.radio/get-involved</a>
-      to get involved.
+      We'd love to have you involved! There are loads of ways to get involved with FreshAir, from presenting a show to managing music tech. 
+      You can find out more about (and join!) our different teams from here.
+      You can also contact us through 
+      <a href="https://www.facebook.com/FreshAirRadio">Facebook</a>, <a href="https://www.instagram.com/freshairradio/">Instagram</a>, or <a href="https://twitter.com/FreshAirRadio">Twitter</a>, or send an email to <a
+      href="mailto:manager@freshair.radio">manager@freshair.radio</a>.
     </p>
     <h3 style="color:white" class="flex">
       Music
