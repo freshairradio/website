@@ -71,7 +71,7 @@
     class="prose prose-md lg:prose-xl mx-auto mt-4 lg:mt-8 mb-8 px-4 overflow-hidden">
 
     <h3 style="color:white" class="flex"><a
-    href="freshair.radio/apply"
+    href="https://freshair.radio/apply"
     class="mx-auto bg-white p-2 s
       rounded-lg text-xl no-underline lowercase join-button">Show Applications are open!</a></h3>
 
