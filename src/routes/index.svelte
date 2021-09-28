@@ -111,34 +111,37 @@
     </div>
   {:else}
     <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
-      Live from the Meadows!
+      Get involved with FreshAir!
     </h1>
   {/if}
-  <div
-    class="h-72 lg:h-96 rounded-3xl  bg-opacity-25 bg-gray-800 flex mx-4"
-    bind:clientHeight={h}
-    bind:clientWidth={w}
-  >
-    <!-- <Control
-      tailwind="z-20 my-auto mx-auto w-20 h-20 lg:w-32 lg:h-32 bg-gray-800 rounded-full"
-      click={() => {
-        console.log("click", playingLive);
-        if (playingLive) {
-          audio.pauseLive();
-        } else {
-          audio.playLive();
-        }
-      }}
-      playing={playingLive}
-    /> -->
-    <!-- <canvas
-      class="waveform absolute top-0"
-      bind:this={canvas}
-      width={w}
-      height={h}
-    /> -->
-    <iframe class="h-72 lg:h-96 rounded-3xl w-full" src="https://www.youtube.com/embed/02jgMdtFb1Q?modestbranding=1&controls=0&rel=0&fs=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
-  </div>
+  <a href="https://freshair.radio/apply">
+    <div
+      class="h-72 lg:h-96 rounded-3xl  bg-opacity-25  flex mx-4"
+      bind:clientHeight={h}
+      bind:clientWidth={w}
+    >
+      <!-- <Control
+        tailwind="z-20 my-auto mx-auto w-20 h-20 lg:w-32 lg:h-32 bg-gray-800 rounded-full"
+        click={() => {
+          console.log("click", playingLive);
+          if (playingLive) {
+            audio.pauseLive();
+          } else {
+            audio.playLive();
+          }
+        }}
+        playing={playingLive}
+      /> -->
+      <!-- <canvas
+        class="waveform absolute top-0"
+        bind:this={canvas}
+        width={w}
+        height={h}
+      /> -->
+      <img class="h-72 lg:h-96 rounded-3xl w-full object-cover" src="/application.png" alt=""/>
+      
+    </div>
+  </a> 
   <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
     recent posts
   </h1>

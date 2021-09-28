@@ -47,31 +47,20 @@
     setTimeout(updateBroadcastInfo, 30000);
   };
   const gradients = [
-    ["rgba(35, 7, 77, 0.8)", "rgba(204, 83, 51, 0.8)"],
-    ["#1488cc", "#2b32b2"],
-    ["#c31432", "#240b36"],
-    ["#f12711", "#f5af19"],
-    ["#659999", "#f4791f"],
-    ["#8360c3", "#2ebf91"],
-    ["#009fff", "#ec2f4b"]
+    ["#5939da", "#7401a7"],
+    // ["#1488cc", "#2b32b2"],
+    // ["#c31432", "#240b36"],
+    // ["#f12711", "#f5af19"],
+    // ["#659999", "#f4791f"],
+    // ["#8360c3", "#2ebf91"],
+    // ["#009fff", "#ec2f4b"]
   ];
-  let gradientA = sample(gradients);
-  let gradientB = sample(gradients);
-  let showing = "a";
+  
   import { onMount } from "svelte";
-  const switchGradient = () => {
-    if (showing === "a") {
-      gradientB = sample(gradients);
-      showing = "b";
-    } else {
-      gradientA = sample(gradients);
-      showing = "a";
-    }
-  };
+  
   onMount(() => {
     updateBroadcastInfo();
-    let i = setInterval(switchGradient, 20000);
-    return () => clearInterval(i);
+   
   });
   import Navitem from "./_navitem.svelte";
   import { audio, seeking } from "./_audio.store.js";
@@ -111,19 +100,10 @@
     ? 'z-30 bg-gray-800 bg-opacity-75'
     : 'bg-gray-800 behind'}  fixed top-0 left-0 h-full w-full"
 />
+
 <div
-  class="gradient behind fixed top-0 left-0 h-full w-full transition-opacity duration-15000 {showing ===
-  'a'
-    ? 'opacity-1'
-    : 'opacity-0'}"
-  style="background: linear-gradient({gradientA.join(',')})"
-/>
-<div
-  class="gradient behind fixed top-0 left-0 h-full w-full transition-opacity duration-15000 {showing ===
-  'b'
-    ? 'opacity-1'
-    : 'opacity-0'}"
-  style="background: linear-gradient({gradientB.join(',')})"
+  class="gradient behind fixed top-0 left-0 h-full w-full opacity-1"
+  style="background: linear-gradient(to top right, #5939da, #7401a7)"
 />
 <div class="mx-auto max-w-wide">
   <nav
