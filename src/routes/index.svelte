@@ -24,68 +24,68 @@
   let h;
   $: playingLive = $audio.live && $audio.volume == 1;
 
-  // onMount(() => {
-  //   window.canvas = canvas;
-  //   let canvasCtx = canvas.getContext("2d");
-  //   let dataArray = new Uint8Array($audio.bufferLength);
-  //   let bufferLength = $audio.bufferLength;
-  //   let frame;
-  //   const draw = () => {
-  //     frame = requestAnimationFrame(draw);
-  //     const WIDTH = w;
-  //     const HEIGHT = h;
-  //     $audio.analyser.getByteTimeDomainData(dataArray);
+  onMount(() => {
+    window.canvas = canvas;
+    let canvasCtx = canvas.getContext("2d");
+    let dataArray = new Uint8Array($audio.bufferLength);
+    let bufferLength = $audio.bufferLength;
+    let frame;
+    const draw = () => {
+      frame = requestAnimationFrame(draw);
+      const WIDTH = w;
+      const HEIGHT = h;
+      $audio.analyser.getByteTimeDomainData(dataArray);
 
-  //     canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+      canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
 
-  //     canvasCtx.strokeStyle = "#fff";
-  //     canvasCtx.fillStyle = "#fff";
+      canvasCtx.strokeStyle = "#fff";
+      canvasCtx.fillStyle = "#fff";
 
-  //     let sliceWidth = (WIDTH * 1.0) / (bufferLength / 128);
-  //     canvasCtx.lineWidth = sliceWidth / 2;
+      let sliceWidth = (WIDTH * 1.0) / (bufferLength / 128);
+      canvasCtx.lineWidth = sliceWidth / 2;
 
-  //     let x = 0;
-  //     //   let y = 0;
-  //     let lastV = 0;
-  //     let zeroes = [];
-  //     canvasCtx.beginPath();
+      let x = 0;
+      //   let y = 0;
+      let lastV = 0;
+      let zeroes = [];
+      canvasCtx.beginPath();
 
-  //     for (let i = 0; i < bufferLength; i += 128) {
-  //       let avg =
-  //         dataArray.slice(i, i + 128).reduce((acc, e) => acc + e, 0) / 128;
-  //       var v = avg / 128.0;
-  //       var y = (v * HEIGHT) / 2;
-  //       var otherV = v == 1 ? v : v > 1 ? 1 - (v - 1) : 1 + (1 - v);
-  //       var otherY = (otherV * HEIGHT) / 2;
-  //       if (i === 0) {
-  //         canvasCtx.moveTo(x, y);
-  //       } else {
-  //         canvasCtx.moveTo(x, y);
+      for (let i = 0; i < bufferLength; i += 128) {
+        let avg =
+          dataArray.slice(i, i + 128).reduce((acc, e) => acc + e, 0) / 128;
+        var v = avg / 128.0;
+        var y = (v * HEIGHT) / 2;
+        var otherV = v == 1 ? v : v > 1 ? 1 - (v - 1) : 1 + (1 - v);
+        var otherY = (otherV * HEIGHT) / 2;
+        if (i === 0) {
+          canvasCtx.moveTo(x, y);
+        } else {
+          canvasCtx.moveTo(x, y);
 
-  //         canvasCtx.lineTo(x, otherY);
-  //       }
+          canvasCtx.lineTo(x, otherY);
+        }
 
-  //       x += sliceWidth;
-  //     }
-  //     // canvasCtx.lineTo(WIDTH, HEIGHT / 2);
-  //     canvasCtx.stroke();
-  //     canvasCtx.closePath();
-  //     return;
-  //   };
-  //   let timeout;
-  //   const run = () => {
-  //     if (playingLive) {
-  //       draw();
-  //     } else {
-  //       timeout = setTimeout(run, 500);
-  //     }
-  //   };
-  //   run();
-  //   return () => {
-  //     clearTimeout(timeout);
-  //     cancelAnimationFrame(frame);
-  //   };
-  // });
+        x += sliceWidth;
+      }
+      // canvasCtx.lineTo(WIDTH, HEIGHT / 2);
+      canvasCtx.stroke();
+      canvasCtx.closePath();
+      return;
+    };
+    let timeout;
+    const run = () => {
+      if (playingLive) {
+        draw();
+      } else {
+        timeout = setTimeout(run, 500);
+      }
+    };
+    run();
+    return () => {
+      clearTimeout(timeout);
+      cancelAnimationFrame(frame);
+    };
+  });
 </script>
 
 <svelte:head>
@@ -96,52 +96,33 @@
     ? 'opacity-0'
     : 'opacity-1'}"
 >
-  {#if $nowplaying.title}
-    <div
-      class="rounded-3xl bg-white bg-opacity-25 bg-gray-800 relative mb-6 overflow-hidden mx-4"
-    >
-      <h1 class="text-3xl text-white p-6 font-thin lowercase my-auto">
-        <strong>{$nowplaying.title}</strong>
-        is live now
-        {#if $nowplaying.meta.byline}
-          with
-          <strong>{$nowplaying.meta.byline}</strong>
-        {/if}
-      </h1>
-    </div>
-  {:else}
     <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
-      Get involved with FreshAir!
+      listen live now!
     </h1>
-  {/if}
-  <a href="https://freshair.radio/apply">
-    <div
-      class="h-72 lg:h-96 rounded-3xl  bg-opacity-25  flex mx-4"
-      bind:clientHeight={h}
-      bind:clientWidth={w}
-    >
-      <!-- <Control
-        tailwind="z-20 my-auto mx-auto w-20 h-20 lg:w-32 lg:h-32 bg-gray-800 rounded-full"
-        click={() => {
-          console.log("click", playingLive);
-          if (playingLive) {
-            audio.pauseLive();
-          } else {
-            audio.playLive();
-          }
-        }}
-        playing={playingLive}
-      /> -->
-      <!-- <canvas
-        class="waveform absolute top-0"
-        bind:this={canvas}
-        width={w}
-        height={h}
-      /> -->
-      <img class="h-72 lg:h-96 rounded-3xl w-full object-cover" src="/application.png" alt=""/>
-      
-    </div>
-  </a> 
+  <div
+    class="h-72 lg:h-96 rounded-3xl  bg-opacity-25 bg-gray-800 flex mx-4"
+    bind:clientHeight={h}
+    bind:clientWidth={w}
+  >
+    <Control
+      tailwind="z-20 my-auto mx-auto w-20 h-20 lg:w-32 lg:h-32 bg-gray-800 rounded-full"
+      click={() => {
+        console.log("click", playingLive);
+        if (playingLive) {
+          audio.pauseLive();
+        } else {
+          audio.playLive();
+        }
+      }}
+      playing={playingLive}
+    />
+    <canvas
+      class="waveform absolute top-0"
+      bind:this={canvas}
+      width={w}
+      height={h}
+    />
+  </div>
   <h1 class="text-4xl text-white py-6 px-4 font-thin lowercase">
     recent posts
   </h1>
