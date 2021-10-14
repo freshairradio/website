@@ -73,7 +73,7 @@ const audio = {
 
       return {
         ...v,
-        src: v.live ? v.src : "http://139.59.171.193:8000/airtime_128",
+        src: v.live ? v.src : "https://live.freshair.radio/airtime_128",
 
         live: true,
         paused: false,
