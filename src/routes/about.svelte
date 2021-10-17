@@ -90,7 +90,7 @@
       You can find out more about (and join!) our different teams from here.
       You can also contact us through 
       <a href="https://www.facebook.com/FreshAirRadio">Facebook</a>, <a href="https://www.instagram.com/freshairradio/">Instagram</a>, or <a href="https://twitter.com/FreshAirRadio">Twitter</a>, or send an email to <a
-      href="mailto:manager@freshair.radio">manager@freshair.radio</a>.
+      href="mailto:secretary@freshair.radio">secretary@freshair.radio</a>.
     </p>
     <h3 style="color:white" class="flex">
       Music

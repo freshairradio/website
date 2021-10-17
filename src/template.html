@@ -12,13 +12,12 @@
     <link rel="icon" type="image/png" href="/FreshairWhiteLogo.png" />
     <title>freshair.radio</title>
 
-    <!-- Cloudflare Web Analytics -->
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "3f27ba43c4a1482b8c545bba9e5fd35c", "spa": true}'
+   <script
+	async
+	defer
+	data-domain="freshair.radio"
+	src="https://analytics.freshair.radio/js/plausible.js"
     ></script>
-    <!-- End Cloudflare Web Analytics -->
     <!-- Sapper creates a <script> tag containing `src/client.js`
 	     and anything else it needs to hydrate the app and
 	     initialise the router -->
@@ -37,5 +36,6 @@
     <!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
     <div id="sapper">%sapper.html%</div>
+
   </body>
 </html>
