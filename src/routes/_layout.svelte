@@ -7,15 +7,16 @@
 </script>
 
 <script>
-  import { sample } from "lodash";
-  import { nowplaying } from "./_nowplaying.store.js";
+  import { sample } from 'lodash';
+  import { nowplaying } from './_nowplaying.store.js';
   const sort = (shows) => {
     let byDay = {};
     shows.forEach((show) => {
-      byDay[show.when.day] = (byDay[show.when.day]
-        ? [...byDay[show.when.day], show]
-        : [show]
-      ).sort((a, b) => a.when.hour.localeCompare(b.when.hour));
+      byDay[show.when.day] = (
+        byDay[show.when.day] ? [...byDay[show.when.day], show] : [show]
+      ).sort((a, b) =>
+        a.when.hour && b.when.hour ? a.when.hour.localeCompare(b.when.hour) : 0
+      );
     });
     return byDay;
   };
@@ -23,13 +24,13 @@
   $: byDate = sort(shows);
   const toDay = (i) =>
     [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
     ][i];
 
   const updateBroadcastInfo = async () => {
@@ -47,7 +48,7 @@
     setTimeout(updateBroadcastInfo, 30000);
   };
   const gradients = [
-    ["#5939da", "#7401a7"],
+    ['#5939da', '#7401a7']
     // ["#1488cc", "#2b32b2"],
     // ["#c31432", "#240b36"],
     // ["#f12711", "#f5af19"],
@@ -55,22 +56,21 @@
     // ["#8360c3", "#2ebf91"],
     // ["#009fff", "#ec2f4b"]
   ];
-  
-  import { onMount } from "svelte";
-  
+
+  import { onMount } from 'svelte';
+
   onMount(() => {
     updateBroadcastInfo();
-   
   });
-  import Navitem from "./_navitem.svelte";
-  import { audio, seeking } from "./_audio.store.js";
-  import { writable } from "svelte/store";
-  import ShowCover from "./_showcover.svelte";
-  import Control from "./_control.svelte";
-  import { stores } from "@sapper/app";
+  import Navitem from './_navitem.svelte';
+  import { audio, seeking } from './_audio.store.js';
+  import { writable } from 'svelte/store';
+  import ShowCover from './_showcover.svelte';
+  import Control from './_control.svelte';
+  import { stores } from '@sapper/app';
   const { page, session } = stores();
-  import Loader from "./_loader.svelte";
-  import { navigating } from "./_pagefade";
+  import Loader from './_loader.svelte';
+  import { navigating } from './_pagefade';
   const width = writable();
   $: playingLive = $audio.live && $audio.volume == 1;
   let menuOpen = false;
@@ -91,8 +91,8 @@
     $audio.analyser = analyser;
   };
 
-  if (typeof document != "undefined")
-    document.addEventListener("mousedown", analyse, { once: true });
+  if (typeof document != 'undefined')
+    document.addEventListener('mousedown', analyse, { once: true });
 </script>
 
 <div
@@ -117,7 +117,7 @@
           <Control
             tailwind="z-20 absolute top-0 left-0 m-12 p-1 w-1/2 h-1/2 bg-gray-800 rounded-full"
             click={() => {
-              console.log("click", playingLive);
+              console.log('click', playingLive);
               if (playingLive) {
                 audio.pauseLive();
               } else {
