@@ -1,8 +1,8 @@
 <script>
   export let show;
-  export let size = "800/800";
-  import { navigating } from "./_pagefade";
-  import { prefetch, goto } from "@sapper/app";
+  export let size = '800/800';
+  import { navigating } from './_pagefade';
+  import { prefetch, goto } from '@sapper/app';
   let tailwind;
   export { tailwind as class };
 </script>
@@ -16,11 +16,12 @@
     navigating.end();
   }}
   href="/shows/{show.slug}"
-  class="show relative block bg-gray-700 rounded-lg overflow-hidden {tailwind}">
+  class="show relative block bg-gray-700 rounded-lg overflow-hidden {tailwind}"
+>
   {#if show.picture}
     <img
       class="object-cover absolute top-0 w-full rounded-lg"
-      src={`https://imgproxy.freshair.radio/signature/fill/${size}/sm/1/plain/${show.picture}@jpg`}
+      src={`https://imgproxy.freshair.radio/signature/watermark:1:nowe:0:0:0.3/rs:fill:${size}:1/g:sm/plain/${show.picture}@jpg`}
       alt={show.title}
     />
   {/if}
@@ -41,7 +42,7 @@
 
 <style>
   .show:before {
-    content: "";
+    content: '';
     display: block;
     height: 0;
     width: 0;
