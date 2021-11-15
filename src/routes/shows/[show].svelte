@@ -9,15 +9,15 @@
 </script>
 
 <script>
-  import dayjs from "dayjs";
-  import isoWeek from "dayjs/plugin/isoWeek";
+  import dayjs from 'dayjs';
+  import isoWeek from 'dayjs/plugin/isoWeek';
   dayjs.extend(isoWeek);
-  import ShowMetadata from "../_showmetadata.svelte";
-  import ShowCover from "../_showcover.svelte";
-  import Episode from "../_episode.svelte";
+  import ShowMetadata from '../_showmetadata.svelte';
+  import ShowCover from '../_showcover.svelte';
+  import Episode from '../_episode.svelte';
   export let show;
-  import { stores } from "@sapper/app";
-  import { navigating } from "../_pagefade";
+  import { stores } from '@sapper/app';
+  import { navigating } from '../_pagefade';
   const { preloading, page, session } = stores();
   let today = dayjs();
   // Filter out episodes which have not yet aired
@@ -41,7 +41,7 @@
     {#if show.meta && show.meta.byline}with {show.meta.byline}{/if}
   </h1>
   <section class="grid grid-cols-1 gap-4 px-6 md:grid-cols-2">
-    <ShowCover {show} size="1000/1000" class="bg-transparent" />
+    <ShowCover {show} size="1000:1000" class="bg-transparent" />
     <div>
       {#if show.meta}
         <ShowMetadata {show} />
