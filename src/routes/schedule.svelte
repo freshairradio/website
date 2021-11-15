@@ -2,22 +2,23 @@
   export function preload({ path, params, query }) {
     return this.fetch(`https://data.freshair.radio/v1/public/shows`)
       .then((r) => r.json())
-      .then((shows) => ({ shows }));
+      .then((shows) => ({
+        shows: shows.filter((s) => s?.when?.year === '2021/22')
+      }));
   }
 </script>
 
 <script>
-  import { prefetch, goto } from "@sapper/app";
+  import { prefetch, goto } from '@sapper/app';
 
-  import { navigating } from "./_pagefade";
+  import { navigating } from './_pagefade';
 
-  import ShowCover from "./_showcover.svelte";
+  import ShowCover from './_showcover.svelte';
   const sort = (shows) => {
     let byDay = {};
     shows.forEach((show) => {
-      byDay[show.when.day] = (byDay[show.when.day]
-        ? [...byDay[show.when.day], show]
-        : [show]
+      byDay[show.when.day] = (
+        byDay[show.when.day] ? [...byDay[show.when.day], show] : [show]
       ).sort((a, b) => a.when.hour.localeCompare(b.when.hour));
     });
     return byDay;
