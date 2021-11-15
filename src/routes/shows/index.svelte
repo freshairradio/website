@@ -2,14 +2,16 @@
   export function preload({ path, params, query }) {
     return this.fetch(`https://data.freshair.radio/v1/public/shows`)
       .then((r) => r.json())
-      .then((shows) => ({ shows }));
+      .then((shows) => ({
+        shows: shows.filter((s) => s?.when?.year === '2021/22')
+      }));
   }
 </script>
 
 <script>
-  import { navigating } from "../_pagefade";
+  import { navigating } from '../_pagefade';
 
-  import ShowCover from "../_showcover.svelte";
+  import ShowCover from '../_showcover.svelte';
   export let shows = [];
 </script>
 
