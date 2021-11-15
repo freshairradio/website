@@ -41,7 +41,7 @@
     <strong>2021</strong>
   </h1>
 
-  {#each Object.keys(byDate) as day}
+  {#each ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as day}
     <div>
       <h2 class="px-4 pt-6 text-3xl font-thin text-white lowercase">
         {toDay(day)}
