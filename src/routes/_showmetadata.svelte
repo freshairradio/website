@@ -2,26 +2,26 @@
   export let show;
   let facebook =
     show.meta && show.meta.facebook
-      ? "https://www.facebook.com/" + show.meta.facebook
+      ? 'https://www.facebook.com/' + show.meta.facebook
       : null;
   let instagram =
     show.meta && show.meta.instagram
-      ? "https://www.instagram.com/" + show.meta.instagram
+      ? 'https://www.instagram.com/' + show.meta.instagram
       : null;
   let twitter =
     show.meta && show.meta.twitter
-      ? "https://twitter.com/" + show.meta.twitter
+      ? 'https://twitter.com/' + show.meta.twitter
       : null;
 
   let day = show.meta.day
     ? [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
       ][show.meta.day]
     : null;
 </script>
@@ -30,7 +30,7 @@
   <a
     class="rss w-10 h-10 inline-block cursor-pointer -ml-2"
     target="_blank"
-    href="https://data.freshair.radio/v1/rss/{show.slug}"
+    href="https://data.freshair.radio/rss/{show.slug}"
   >
     <svg
       id="emoji"

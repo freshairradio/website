@@ -1,6 +1,6 @@
 <script>
-  import { audio, others } from "../_audio.store.js";
-  import Control from "../_control.svelte";
+  import { audio, others } from '../_audio.store.js';
+  import Control from '../_control.svelte';
   export let episode;
   export let show;
   let w;
@@ -9,7 +9,7 @@
   $: playing = !$audio.paused && $audio.src == episode.meta.audio;
   let scrubber;
   let held = false;
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
   const onMousedown = (e) => {
     const rect = scrubber.getBoundingClientRect();
     audio.goto(((e.clientX - rect.x) / rect.width) * $audio.duration);
@@ -27,8 +27,8 @@
   };
 
   onMount(() => {
-    if (!navigator.userAgent.match("jsdom")) {
-      let canvasCtx = canvas.getContext("2d");
+    if (!navigator.userAgent.match('jsdom')) {
+      let canvasCtx = canvas.getContext('2d');
       let dataArray = new Uint8Array($audio.bufferLength);
       let bufferLength = $audio.bufferLength;
       let frame;
@@ -41,8 +41,8 @@
 
         canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
 
-        canvasCtx.strokeStyle = "#000";
-        canvasCtx.fillStyle = "#000";
+        canvasCtx.strokeStyle = '#000';
+        canvasCtx.fillStyle = '#000';
 
         let sliceWidth = (WIDTH * 1.0) / (bufferLength / 64);
         canvasCtx.lineWidth = sliceWidth / 2;
@@ -54,8 +54,7 @@
         canvasCtx.beginPath();
 
         for (let i = 0; i < bufferLength; i += 64) {
-          let avg =
-            dataArray.slice(i, i + 64).reduce((acc, e) => acc + e, 0) / 64;
+          let avg = Math.max(...dataArray.slice(i, i + 64));
           var v = avg / 128.0;
           var y = (v * HEIGHT) / 2;
           var otherV = v == 1 ? v : v > 1 ? 1 - (v - 1) : 1 + (1 - v);
@@ -94,7 +93,8 @@
 
 <div
   id={`episode-${episode.identifier}`}
-  class="my-4   bg-white max-w-xl mx-auto rounded-3xl shadow-inner">
+  class="my-4   bg-white max-w-xl mx-auto rounded-3xl shadow-inner"
+>
   <div
     class="h-20 relative overflow-hidden cursor-pointer rounded-3xl"
     bind:clientWidth={w}
@@ -102,7 +102,8 @@
     bind:this={scrubber}
     on:pointerdown={onMousedown}
     on:pointerup={onMouseup}
-    on:pointermove={onMousemove}>
+    on:pointermove={onMousemove}
+  >
     <Control
       tailwind="bg-gray-900 rounded-full z-20 w-16 h-16 m-2 relative"
       click={() => {
@@ -112,16 +113,24 @@
           audio.playPodcast(episode, show);
         }
       }}
-      {playing} />
+      {playing}
+    />
     {#if $others && $others[episode.meta.audio]}
       <div>
         <div
           class="absolute top-0 h-20 left-0 bg-gray-300"
-          style="width:{($others[episode.meta.audio].current / $others[episode.meta.audio].duration) * w}px" />
+          style="width:{($others[episode.meta.audio].current /
+            $others[episode.meta.audio].duration) *
+            w}px"
+        />
         <div
-          class="h-20 text-white font-thin text-lg bottom-0 absolute right-0 p-1 pr-2">
-          {Math.round(($others[episode.meta.audio].duration - $others[episode.meta.audio].current) / 60).toString()}m
-          left
+          class="h-20 text-white font-thin text-lg bottom-0 absolute right-0 p-1 pr-2"
+        >
+          {Math.round(
+            ($others[episode.meta.audio].duration -
+              $others[episode.meta.audio].current) /
+              60
+          ).toString()}m left
         </div>
       </div>
     {/if}
@@ -129,6 +138,7 @@
       class="waveform absolute top-0"
       bind:this={canvas}
       width={w}
-      height={h} />
+      height={h}
+    />
   </div>
 </div>
