@@ -73,7 +73,7 @@ const audio = {
 
       return {
         ...v,
-        src: v.live ? v.src : "https://live.freshair.radio/airtime_128?ts="+Date.now(), // Browser cache-busting
+        src: v.live ? v.src : "https://live.freshair.radio/master?ts="+Date.now(), // Browser cache-busting
 
         live: true,
         paused: false,
