@@ -27,7 +27,7 @@ const audio = {
   subscribe,
   playPodcast: (podcast, show) => {
     return update((v) => {
-      if (!/radio\.freshair/.test(v.src))
+      if (!/live\.freshair/.test(v.src))
         v.others[v.src] = { current: v.ref.currentTime, duration: v.duration };
 
       let storedCurrent = v.others[podcast.meta.audio];
@@ -73,7 +73,7 @@ const audio = {
 
       return {
         ...v,
-        src: v.live ? v.src : "https://live.freshair.radio/master?ts="+Date.now(), // Browser cache-busting
+        src: v.live ? v.src : "https://live.freshair.radio/studio?ts="+Date.now(), // Browser cache-busting
 
         live: true,
         paused: false,
